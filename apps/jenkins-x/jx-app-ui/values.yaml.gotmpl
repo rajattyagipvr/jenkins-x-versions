@@ -1,16 +1,4 @@
 jxui:
   sso:
-    create: false
+    oidcIssuerUrl: "{{ .Values.jxRequirements.ingress.domainIssuerURL  }}""
     domain: "{{ .Values.jxRequirements.ingress.domain }}"
-{{- if hasKey .Values.jxRequirements.ingress "domainIssuerURL" }}
-    oidcIssuerUrl: "{{ .Values.jxRequirements.ingress.domainIssuerURL }}"
-{{- end }}
-
-jx-app-ui:
-  jxui:
-    sso:
-      create: false
-      domain: "{{ .Values.jxRequirements.ingress.domain }}"
-{{- if hasKey .Values.jxRequirements.ingress "domainIssuerURL" }}
-      oidcIssuerUrl: "{{ .Values.jxRequirements.ingress.domainIssuerURL }}"
-{{- end }}
