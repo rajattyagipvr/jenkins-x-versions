@@ -66,3 +66,4 @@ Dependency | Sources | Version | Mismatched versions
 [jenkins-x-charts/jxboot-helmfile-resources](https://github.com/jenkins-x-charts/jxboot-helmfile-resources) |  | [0.0.89]() | 
 [kubernetes-sigs/external-dns](https://github.com/kubernetes-sigs/external-dns) |  | [2.20.2]() | 
 [jenkins-x-labs/jxl](https://github.com/jenkins-x-labs/jxl) |  | [0.0.114](https://github.com/jenkins-x-labs/jxl/releases/tag/v0.0.114) | 
+[jenkins-x-labs/istio](https://github.com/jenkins-x-labs/istio) |  | [0.0.14]() | 
