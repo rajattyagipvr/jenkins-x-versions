@@ -1,2 +1,13 @@
 namespace: cert-manager
 phase: system
+hooks:
+- name: "crd-apply"
+  events: ["prepare"]
+  showlogs: true
+  command: "kubectl"
+  args:
+  - apply
+  - --wait
+  - --validate=false
+  - -f
+  - https://raw.githubusercontent.com/jetstack/cert-manager/release-0.11/deploy/manifests/00-crds.yaml
