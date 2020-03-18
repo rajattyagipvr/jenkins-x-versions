@@ -471,5 +471,5 @@ dependencies:
   owner: jenkins-x-labs
   repo: istio
   url: https://github.com/jenkins-x-labs/istio
-  version: 0.0.20
+  version: 0.0.21
   versionURL: ""
