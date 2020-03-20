@@ -1,0 +1,54 @@
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-credential-initializer-zpbl5[0m
+{"level":"warn","ts":1584715305.2360656,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1584715305.2368937,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-working-dir-initializer-l8wth[0m
+{"level":"warn","ts":1584715305.7989771,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1584715305.8004918,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-git-source-jenkins-x-labs-jenkins-x-versio-tshjn-kt9q4[0m
+{"level":"warn","ts":1584715312.0819986,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1584715313.4692473,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/jenkins-x-labs/jenkins-x-versions.git @ v2.0.59 in path /workspace/source"}
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:258916d77fdd128cfa9205bfdab07722372ccea2
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-get-jx-prerelease-state[0m
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-changelog[0m
+Converted /workspace/source to an unshallow repository
+DEBUG: Using helmBinary helm with feature flag: template-mode
+Generating change log from git ref bf1429b46ff6235cf3d57e3f7a3573f9e54cfb86 => v2.0.59
+DEBUG: merging pipeline secrets with local secrets
+DEBUG: merging pipeline secrets with local secrets
+WARNING: failed to find git commits between revision bf1429b46ff6235cf3d57e3f7a3573f9e54cfb86 and v2.0.59 due to: object not found
+DEBUG: Found commits:
+DEBUG: Generated release notes:
+
+
+WARNING: No release found for jenkins-x-labs/jenkins-x-versions and tag v2.0.59 so creating a new release
+Updated the release information at https://github.com/jenkins-x-labs/jenkins-x-versions/releases/tag/v2.0.59
+Uploaded /workspace/source/dependency-matrix/matrix.yaml to release asset https://github.com/jenkins-x-labs/jenkins-x-versions/releases/download/v2.0.59/dependency-matrix.yaml
+generated: /workspace/source/templates/release.yaml
+Created Release jenkins-x-versions-2-0-59 resource in namespace **
+Updating PipelineActivity jenkins-x-labs-jenkins-x-versions-master-4 with version 2.0.59
+Updated PipelineActivities jenkins-x-labs-jenkins-x-versions-master-4 with release notes URL: https://github.com/jenkins-x-labs/jenkins-x-versions/releases/tag/v2.0.59
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-release-jx[0m
++ export GH_OWNER=jenkins-x
++ GH_OWNER=jenkins-x
++ export GH_REPO=**
++ GH_REPO=**
+++ sed 's:^.*jenkins-x\/**.*\[\([0-9.]*\)\].*$:\1:;t;d' ./dependency-matrix/matrix.md
++ export JX_VERSION=2.0.1245
++ JX_VERSION=2.0.1245
++ [[ 2.0.1245 =~ ^[0-9]*\.[0-9]*\.[0-9]*$ ]]
++ ** step update release-status github --owner jenkins-x --repository ** --version 2.0.1245 --prerelease=false
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-update-jx-bot[0m
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-tshjn-4[0m stage [32mchangelog[0m and container [32mstep-update-jx-website[0m
