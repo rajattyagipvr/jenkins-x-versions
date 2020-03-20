@@ -1,4 +1,4 @@
-namespace: cert-manager
+namespace: istio-system
 phase: system
 hooks:
 - name: "crd-apply"
@@ -10,4 +10,4 @@ hooks:
   - --wait
   - --validate=false
   - -f
-  - https://raw.githubusercontent.com/jetstack/cert-manager/release-0.11/deploy/manifests/00-crds.yaml
+  - https://raw.githubusercontent.com/weaveworks/flagger/master/artifacts/flagger/crd.yaml
