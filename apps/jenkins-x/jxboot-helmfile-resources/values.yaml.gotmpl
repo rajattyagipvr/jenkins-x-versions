@@ -1,3 +1,10 @@
+{{- if eq .Values.jxRequirements.cluster.provider "gke"}}
+controllerbuild:
+  serviceaccount:
+    annotations:
+      iam.gke.io/gcp-service-account: {cluster_name}-st@{project_id}.iam.gserviceaccount.com
+{{- end }}
+
 secrets:
   mavenSettings: |-
     <settings>
