@@ -1,0 +1,5 @@
+serviceaccount:
+{{- if eq "eks" .Values.jxRequirements.cluster.provider }}
+  enabled: false
+{{- end }}
+
