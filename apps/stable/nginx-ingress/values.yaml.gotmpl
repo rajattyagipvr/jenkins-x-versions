@@ -6,6 +6,8 @@ controller:
     omitClusterIP: true
   {{- if eq .Values.jxRequirements.cluster.provider "kind" }}
     type: NodePort
+  {{- else if hasKey .Values.jxRequirements.ingress "serviceType" }}  
+    type: {{ .Values.jxRequirements.ingress.serviceType }}
   {{- end }}
   {{- if eq .Values.jxRequirements.cluster.provider "eks" }}
   annotations:
