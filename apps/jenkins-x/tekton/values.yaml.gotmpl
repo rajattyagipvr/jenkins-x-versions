@@ -13,4 +13,9 @@ auth:
     url: "{{ .Values.secrets.docker.url }}"
 {{- end }}
 
+{{- if eq "eks" .Values.jxRequirements.cluster.provider }}
+serviceaccount:
+  enabled: false
+{{- end }}
+
 tillerNamespace: ""
