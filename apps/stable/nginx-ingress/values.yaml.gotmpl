@@ -1,7 +1,7 @@
 controller:
   replicaCount: 3
   extraArgs:
-    publish-service: nginx/jxing-nginx-ingress-controller
+    publish-service: nginx/nginx-ingress-controller
   service:
     omitClusterIP: true
   {{- if eq .Values.jxRequirements.cluster.provider "kind" }}
