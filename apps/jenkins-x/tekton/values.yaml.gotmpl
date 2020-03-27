@@ -16,6 +16,10 @@ auth:
 {{- if eq "eks" .Values.jxRequirements.cluster.provider }}
 serviceaccount:
   enabled: false
+{{- if eq .Values.jxRequirements.cluster.provider "gke" }}
+  annotations:
+    iam.gke.io/gcp-service-account: {{ .Values.jxRequirements.cluster.clusterName }}-tk@{{ .Values.jxRequirements.cluster.project }}.iam.gserviceaccount.com
+{{- end }}
 {{- end }}
 
 tillerNamespace: ""
