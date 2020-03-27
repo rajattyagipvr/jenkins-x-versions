@@ -1,9 +1,3 @@
-{{- if eq .Values.jxRequirements.cluster.provider "gke" }}
-rbac:
-  serviceAccountAnnotations:
-    iam.gke.io/gcp-service-account: {{ .Values.jxRequirements.cluster.clusterName }}-ex@{{ .Values.jxRequirements.cluster.project }}.iam.gserviceaccount.com
-{{- end }}
-
 sources:
 - ingress
 {{- if eq .Values.jxRequirements.cluster.provider "eks" }}
@@ -23,6 +17,11 @@ google:
 
 rbac:
   create: true
+{{- if eq .Values.jxRequirements.cluster.provider "gke" }}
+  serviceAccountAnnotations:
+    iam.gke.io/gcp-service-account: {{ .Values.jxRequirements.cluster.clusterName }}-ex@{{ .Values.jxRequirements.cluster.project }}.iam.gserviceaccount.com
+{{- end }}
+
 domainFilters:
 {{- range .Values.jxRequirements.environments }}
 {{- if .ingress.domain }}
