@@ -6,6 +6,22 @@ controllerbuild:
 {{- end }}
 
 secrets:
+{{- if eq .Values.jxRequirements.cluster.provider "eks" }}
+  {{- if .Values.jxRequirements.cluster.registry }}
+  dockerConfig: |-
+    {
+      "credHelpers": {
+        "{{ .Values.jxRequirements.cluster.registry }}": "ecr-login"
+      }
+    }
+  {{- else }}
+  dockerConfig: |-
+    {
+      "credsStore": "ecr-login"
+    }
+  {{- end }}
+{{- end }}
+
   mavenSettings: |-
     <settings>
         <localRepository>/home/jenkins/.mvnrepository</localRepository>
