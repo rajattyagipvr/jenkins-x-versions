@@ -5,6 +5,12 @@ controllerbuild:
       iam.gke.io/gcp-service-account: {{ .Values.jxRequirements.cluster.clusterName }}-st@{{ .Values.jxRequirements.cluster.project }}.iam.gserviceaccount.com
 {{- end }}
 
+{{- if eq .Values.jxRequirements.cluster.provider "eks" }}
+podTemplates:
+  agent:
+    dockerConfig: true
+{{- end }}
+
 secrets:
 {{- if eq .Values.jxRequirements.cluster.provider "eks" }}
   {{- if .Values.jxRequirements.cluster.registry }}
