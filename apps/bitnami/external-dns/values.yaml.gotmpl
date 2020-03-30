@@ -4,7 +4,7 @@ sources:
 provider: aws
 aws:
   region: {{ .Values.jxRequirements.cluster.region }}
-securityContext:
+podSecurityContext:
   fsGroup: 65534
 {{- else if eq .Values.jxRequirements.cluster.provider "gke" }}
 provider: google
