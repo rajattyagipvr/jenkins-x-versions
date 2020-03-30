@@ -1,16 +1,12 @@
 cert-manager:
   enabled: {{ .Values.jxRequirements.ingress.tls.enabled }}
 {{- if eq .Values.jxRequirements.cluster.provider "eks" }}
-  extraArgs:
-    - --issuer-ambient-credentials
-  securityContext:
-    enabled: true
-    fsGroup: 1001
+extraArgs:
+  - --issuer-ambient-credentials
+securityContext:
+  enabled: true
+  fsGroup: 1001
 {{- end }}
-  rbac:
-    create: true
-  webhook:
-    enabled: false
-    
+
 webhook:
   enabled: false
