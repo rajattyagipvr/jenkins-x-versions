@@ -1,8 +1,8 @@
 service:
-{{- if eq "NodePort" .Values.jxRequirements.ingress.serviceType }}
-  type: NodePort
-{{- else }}
   port: 80
+
+{{- if eq "NodePort" .Values.jxRequirements.ingress.serviceType }}
+{{- else }}
 
 ingress:
   enabled: true
