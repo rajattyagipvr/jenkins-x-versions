@@ -1,12 +1,11 @@
 service:
+{{- if eq "NodePort" .Values.jxRequirements.ingress.serviceType }}
+  type: NodePort
+{{- else }}
   port: 80
 
 ingress:
   enabled: true
-
-{{- if eq "NodePort" .Values.jxRequirements.ingress.serviceType }}
-  path: /docker-registry
-{{- else }}
   hosts:
   - docker-registry{{ .Values.jxRequirements.ingress.namespaceSubDomain }}{{ .Values.jxRequirements.ingress.domain }}
 {{- end }}
