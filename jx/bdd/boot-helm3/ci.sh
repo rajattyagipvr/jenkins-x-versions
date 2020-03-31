@@ -12,9 +12,9 @@ mkdir -p $JX_HOME/git
 
 jx --version
 
-export GH_USERNAME="jenkins-x-versions-bot-test"
+export GH_USERNAME="jstrachan"
 export GH_EMAIL="jenkins-x@googlegroups.com"
-export GH_OWNER="jenkins-x-versions-bot-test"
+export GH_OWNER="jenkins-x-labs-bdd-tests"
 
 # lets setup git
 git config --global --add user.name JenkinsXBot
