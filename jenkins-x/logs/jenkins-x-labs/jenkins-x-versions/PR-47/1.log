@@ -1,0 +1,78 @@
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7m4cn-1[0m stage [32mci[0m and container [32mstep-credential-initializer-f9kz7[0m
+{"level":"warn","ts":1585648492.4976408,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585648492.4982567,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7m4cn-1[0m stage [32mci[0m and container [32mstep-working-dir-initializer-4schx[0m
+{"level":"warn","ts":1585648493.4987135,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1585648493.5100021,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7m4cn-1[0m stage [32mci[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7m4cn-1[0m stage [32mci[0m and container [32mstep-git-source-jenkins-x-labs-jenkins-x-versio-7m4cn-856lq[0m
+{"level":"warn","ts":1585648498.6364188,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585648500.4907746,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/jenkins-x-labs/jenkins-x-versions.git @ master in path /workspace/source"}
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7m4cn-1[0m stage [32mci[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:149532602ab47f543f757da474ea3ab84fc3d8d1,47:01619cdebaf5ea4f74e35e2332af22dbcc47519c
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch origin --unshallow 01619cdebaf5ea4f74e35e2332af22dbcc47519c: 149532602ab47f543f757da474ea3ab84fc3d8d1:
+DEBUG: ran git fetch --unshallow origin 01619cdebaf5ea4f74e35e2332af22dbcc47519c: 149532602ab47f543f757da474ea3ab84fc3d8d1: in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git branch
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git checkout master
+DEBUG: ran git checkout master in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git reset --hard 149532602ab47f543f757da474ea3ab84fc3d8d1
+DEBUG: ran git reset --hard 149532602ab47f543f757da474ea3ab84fc3d8d1 in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git clean -fd .
+DEBUG: ran clean --force -d . in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git merge 01619cdebaf5ea4f74e35e2332af22dbcc47519c
+DEBUG: ran git merge 01619cdebaf5ea4f74e35e2332af22dbcc47519c in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git log --format=%H%x1f%an%x1f%ae%x1f%cn%x1f%ce%x1f%s%n%b%x1e 149532602ab47f543f757da474ea3ab84fc3d8d1..HEAD
+Merged SHA 01619cdebaf5ea4f74e35e2332af22dbcc47519c with commit message 'fix: update to latest secrets' into base branch master
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7m4cn-1[0m stage [32mci[0m and container [32mstep-runci[0m
++ JX_HOME=/tmp/**home
++ KUBECONFIG=/tmp/**home/config
++ export XDG_CONFIG_HOME=/tmp/**home
++ XDG_CONFIG_HOME=/tmp/**home
++ mkdir -p /tmp/**home/git
++ ** --version
+2.0.1259-dev+6eea55443
++ export GH_USERNAME=jenkins-x-versions-bot-test
++ GH_USERNAME=jenkins-x-versions-bot-test
++ export GH_EMAIL=jenkins-x@googlegroups.com
++ GH_EMAIL=jenkins-x@googlegroups.com
++ export GH_OWNER=jenkins-x-versions-bot-test
++ GH_OWNER=jenkins-x-versions-bot-test
++ git config --global --add user.name JenkinsXBot
++ git config --global --add user.email jenkins-x@googlegroups.com
+running the BDD tests with JX_HOME = /tmp/**home
++ echo 'running the BDD tests with JX_HOME = /tmp/**home'
++ echo 'https://jenkins-x-versions-bot-test:v1.08cb7d2d71d13444e8132528588cdc68d3056b8b
+@github.com'
++ gcloud auth activate-service-account --key-file /secrets/bdd/sa.json
+Activated service account credentials for: [bdd-sa@jenkins-x-labs-bdd.iam.gserviceaccount.com]
+++ date +%a-%b-%d-%Y-%H-%M-%S
++ export CREATED_TIME=Tue-Mar-31-2020-09-55-09
++ CREATED_TIME=Tue-Mar-31-2020-09-55-09
++ export PROJECT_ID=jenkins-x-bdd3
++ PROJECT_ID=jenkins-x-bdd3
++ export CLUSTER_NAME=pr-47-1-bdd-boot-helm3
++ CLUSTER_NAME=pr-47-1-bdd-boot-helm3
++ export ZONE=europe-west1-c
++ ZONE=europe-west1-c
++ export LABELS=branch=pr-47,cluster=bdd-boot-helm3,create-time=tue-mar-31-2020-09-55-09
++ LABELS=branch=pr-47,cluster=bdd-boot-helm3,create-time=tue-mar-31-2020-09-55-09
++ echo 'creating cluster pr-47-1-bdd-boot-helm3 with labels branch=pr-47,cluster=bdd-boot-helm3,create-time=tue-mar-31-2020-09-55-09'
++ git clone https://github.com/jenkins-x-labs/cloud-resources.git
+creating cluster pr-47-1-bdd-boot-helm3 with labels branch=pr-47,cluster=bdd-boot-helm3,create-time=tue-mar-31-2020-09-55-09
+Cloning into 'cloud-resources'...
++ cloud-resources/gcloud/create_cluster.sh
+creating a new cluster pr-47-1-bdd-boot-helm3 in project jenkins-x-bdd3 and region europe-west1-c
+WARNING: Currently VPC-native is not the default mode during cluster creation. In the future, this will become the default mode and can be disabled using `--no-enable-ip-alias` flag. Use `--[no-]enable-ip-alias` flag to suppress this warning.
+WARNING: Newly created clusters and node-pools will have node auto-upgrade enabled by default. This can be disabled using the `--no-enable-autoupgrade` flag.
+WARNING: Starting with version 1.18, clusters will have shielded GKE nodes by default.
+WARNING: Your Pod address range (`--cluster-ipv4-cidr`) can accommodate at most 1008 node(s). 
+This will enable the autorepair feature for nodes. Please see https://cloud.google.com/kubernetes-engine/docs/node-auto-repair for more information on node autorepairs.
+ERROR: (gcloud.beta.container.clusters.create) ResponseError: code=403, message=Kubernetes Engine API has not been used in project 688875092189 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/container.googleapis.com/overview?project=688875092189 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+[31m
+Pipeline failed on stage 'ci' : container 'step-runci'. The execution of the pipeline has stopped.[0m
