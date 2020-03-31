@@ -1,64 +1,54 @@
 
-Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7x78b-1[0m stage [32mchangelog[0m and container [32mstep-credential-initializer-mh4bq[0m
-{"level":"warn","ts":1584700441.8454037,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
-{"level":"info","ts":1584700441.8460386,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-credential-initializer-76tr4[0m
+{"level":"warn","ts":1585646562.4025679,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585646562.403556,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
 
-Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7x78b-1[0m stage [32mchangelog[0m and container [32mstep-working-dir-initializer-ml5b5[0m
-{"level":"warn","ts":1584700443.2191086,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
-{"level":"info","ts":1584700443.2204947,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-working-dir-initializer-p6trt[0m
+{"level":"warn","ts":1585646563.4781547,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1585646563.479301,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
 
-Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7x78b-1[0m stage [32mchangelog[0m and container [32mstep-place-tools[0m
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-place-tools[0m
 
-Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7x78b-1[0m stage [32mchangelog[0m and container [32mstep-git-source-jenkins-x-labs-jenkins-x-versio-7x78b-vfmrd[0m
-{"level":"warn","ts":1584700530.335646,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
-{"level":"info","ts":1584700531.7271311,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/jenkins-x-labs/jenkins-x-versions.git @ v2.0.53 in path /workspace/source"}
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-git-source-jenkins-x-labs-jenkins-x-versio-nvfsj-dhl94[0m
+{"level":"warn","ts":1585646655.591218,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585646657.160553,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/jenkins-x-labs/jenkins-x-versions.git @ v2.0.102 in path /workspace/source"}
 
-Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7x78b-1[0m stage [32mchangelog[0m and container [32mstep-git-merge[0m
-Using SHAs from PULL_REFS=master:
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:88909b7c95573f0e5831ee8e28dbe9cc957df09d
 WARNING: no SHAs to merge, falling back to initial cloned commit
 
-Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7x78b-1[0m stage [32mchangelog[0m and container [32mstep-get-jx-prerelease-state[0m
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-get-jx-prerelease-state[0m
 
-Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-7x78b-1[0m stage [32mchangelog[0m and container [32mstep-changelog[0m
-Error: flag needs an argument: --rev
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-changelog[0m
+Converted /workspace/source to an unshallow repository
+DEBUG: Using helmBinary helm with feature flag: template-mode
+Generating change log from git ref cc0b0d98138263bf3e0d4a1ca0fed2dc6c5110d8 => v2.0.102
+DEBUG: merging pipeline secrets with local secrets
+DEBUG: merging pipeline secrets with local secrets
+WARNING: failed to find git commits between revision cc0b0d98138263bf3e0d4a1ca0fed2dc6c5110d8 and v2.0.102 due to: object not found
+DEBUG: Found commits:
+DEBUG: Generated release notes:
 
 
-Aliases:
-changelog, changes
-Examples:
-  # generate a changelog on the current source
-  ** step changelog
-  
-  # specify the version to use
-  ** step changelog --version 1.2.3
-  
-  # specify the version and a header template
-  ** step changelog --header-file docs/dev/changelog-header.md --version 1.2.3
-Options:
-      --build='': The Build number which is used to update the PipelineActivity. If not specified its defaulted from  the '$BUILD_NUMBER' environment variable
-  -c, --crd=false: Generate the CRD in the chart
-      --crd-yaml-file='release-crd.yaml': the name of the file to generate the Release CustomResourceDefinition YAML
-      --dir='': The directory of the Git repository. Defaults to the current working directory
-      --fail-if-no-commits=false: Do we want to fail the build if we don't find any commits to generate the changelog
-      --footer='': The changelog footer in markdown for the changelog. Can use go template expressions on the ReleaseSpec object: https://golang.org/pkg/text/template/
-      --footer-file='': The file name of the changelog footer in markdown for the changelog. Can use go template expressions on the ReleaseSpec object: https://golang.org/pkg/text/template/
-  -y, --generate-yaml=true: Generate the Release YAML in the local helm chart
-      --header='': The changelog header in markdown for the changelog. Can use go template expressions on the ReleaseSpec object: https://golang.org/pkg/text/template/
-      --header-file='': The file name of the changelog header in markdown for the changelog. Can use go template expressions on the ReleaseSpec object: https://golang.org/pkg/text/template/
-      --include-merge-commits=false: Include merge commits when generating the changelog
-      --no-dev-release=false: Disables the generation of Release CRDs in the development namespace to track releases being performed
-      --output-markdown='': The file to generate for the changelog output if not updating a Git provider release
-  -o, --overwrite=false: overwrites the Release CRD YAML file if it exists
-      --previous-date='': the previous date to find a revision in format 'MonthName dayNumber year'
-  -p, --previous-rev='': the previous tag revision
-      --release-yaml-file='release.yaml': the name of the file to generate the Release YAML
-  -r, --rev='': the current tag revision
-  -t, --templates-dir='': the directory containing the helm chart templates to generate the resources
-      --update-release=true: Should we update the release on the Git repository with the changelog
-  -v, --version='': The version to release
-Usage:
-  ** step changelog [flags] [options]
-Use "** options" for a list of global command-line options (applies to all commands).
+WARNING: No release found for jenkins-x-labs/jenkins-x-versions and tag v2.0.102 so creating a new release
+Updated the release information at https://github.com/jenkins-x-labs/jenkins-x-versions/releases/tag/v2.0.102
+Uploaded /workspace/source/dependency-matrix/matrix.yaml to release asset https://github.com/jenkins-x-labs/jenkins-x-versions/releases/download/v2.0.102/dependency-matrix.yaml
+generated: /workspace/source/templates/release.yaml
+Created Release jenkins-x-versions-2-0-102 resource in namespace **
+Updating PipelineActivity jenkins-x-labs-jenkins-x-versions-master-1 with version 2.0.102
+Updated PipelineActivities jenkins-x-labs-jenkins-x-versions-master-1 with release notes URL: https://github.com/jenkins-x-labs/jenkins-x-versions/releases/tag/v2.0.102
 
-[31m
-Pipeline failed on stage 'changelog' : container 'step-changelog'. The execution of the pipeline has stopped.[0m
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-release-jx[0m
++ export GH_OWNER=jenkins-x
++ GH_OWNER=jenkins-x
++ export GH_REPO=**
++ GH_REPO=**
+++ sed 's:^.*jenkins-x\/**.*\[\([0-9.]*\)\].*$:\1:;t;d' ./dependency-matrix/matrix.md
++ export JX_VERSION=2.0.1245
++ JX_VERSION=2.0.1245
++ [[ 2.0.1245 =~ ^[0-9]*\.[0-9]*\.[0-9]*$ ]]
++ ** step update release-status github --owner jenkins-x --repository ** --version 2.0.1245 --prerelease=false
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-update-jx-bot[0m
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-nvfsj-1[0m stage [32mchangelog[0m and container [32mstep-update-jx-website[0m
