@@ -1,0 +1,81 @@
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-qmr6d-2[0m stage [32mci[0m and container [32mstep-credential-initializer-xh8jv[0m
+{"level":"warn","ts":1585655467.2190838,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585655467.2197783,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-qmr6d-2[0m stage [32mci[0m and container [32mstep-working-dir-initializer-lrpr5[0m
+{"level":"warn","ts":1585655467.822374,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1585655467.8233132,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-qmr6d-2[0m stage [32mci[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-qmr6d-2[0m stage [32mci[0m and container [32mstep-git-source-jenkins-x-labs-jenkins-x-versio-qmr6d-6l2tp[0m
+{"level":"warn","ts":1585655471.9725096,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585655473.5013614,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/jenkins-x-labs/jenkins-x-versions.git @ master in path /workspace/source"}
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-qmr6d-2[0m stage [32mci[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:88909b7c95573f0e5831ee8e28dbe9cc957df09d,47:007fef8f036dbb379ad040c52478eda82ff51ee0
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch origin --unshallow 007fef8f036dbb379ad040c52478eda82ff51ee0: 88909b7c95573f0e5831ee8e28dbe9cc957df09d:
+DEBUG: ran git fetch --unshallow origin 007fef8f036dbb379ad040c52478eda82ff51ee0: 88909b7c95573f0e5831ee8e28dbe9cc957df09d: in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git branch
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git checkout master
+DEBUG: ran git checkout master in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git reset --hard 88909b7c95573f0e5831ee8e28dbe9cc957df09d
+DEBUG: ran git reset --hard 88909b7c95573f0e5831ee8e28dbe9cc957df09d in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git clean -fd .
+DEBUG: ran clean --force -d . in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git merge 007fef8f036dbb379ad040c52478eda82ff51ee0
+DEBUG: ran git merge 007fef8f036dbb379ad040c52478eda82ff51ee0 in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git log --format=%H%x1f%an%x1f%ae%x1f%cn%x1f%ce%x1f%s%n%b%x1e 88909b7c95573f0e5831ee8e28dbe9cc957df09d..HEAD
+Merged SHA a49f6ef40c1dddcf8c36f24cd545f68e3cfee3b6 with commit message 'Merge commit '007fef8f036dbb379ad040c52478eda82ff51ee0'' into base branch master
+Merged SHA 007fef8f036dbb379ad040c52478eda82ff51ee0 with commit message 'chore: typo' into base branch master
+Merged SHA 0c9dc4d3d6dc8cf09f19ee4c5990965cf8d3ede9 with commit message 'fix: use diffferent GH owner' into base branch master
+Merged SHA 01619cdebaf5ea4f74e35e2332af22dbcc47519c with commit message 'fix: update to latest secrets' into base branch master
+
+Showing logs for build [32mjenkins-x-labs-jenkins-x-versio-qmr6d-2[0m stage [32mci[0m and container [32mstep-runci[0m
++ JX_HOME=/tmp/**home
++ KUBECONFIG=/tmp/**home/config
++ export XDG_CONFIG_HOME=/tmp/**home
++ XDG_CONFIG_HOME=/tmp/**home
++ mkdir -p /tmp/**home/git
++ ** --version
+2.0.1259-dev+6eea55443
++ export GH_USERNAME=*********
++ GH_USERNAME=*********
++ export GH_EMAIL=jenkins-x@googlegroups.com
++ GH_EMAIL=jenkins-x@googlegroups.com
++ export GH_OWNER=jenkins-x-labs-bdd-tests
++ GH_OWNER=jenkins-x-labs-bdd-tests
++ git config --global --add user.name JenkinsXBot
++ git config --global --add user.email jenkins-x@googlegroups.com
+running the BDD test with JX_HOME = /tmp/**home
++ echo 'running the BDD test with JX_HOME = /tmp/**home'
++ echo 'https://*********:****************************************
+@github.com'
++ gcloud auth activate-service-account --key-file /secrets/bdd/sa.json
+Activated service account credentials for: [bdd-sa@jenkins-x-labs-bdd.iam.gserviceaccount.com]
+++ date +%a-%b-%d-%Y-%H-%M-%S
++ export CREATED_TIME=Tue-Mar-31-2020-11-51-18
++ CREATED_TIME=Tue-Mar-31-2020-11-51-18
++ export PROJECT_ID=jenkins-x-bdd3
++ PROJECT_ID=jenkins-x-bdd3
++ export CLUSTER_NAME=pr-47-2-bdd-boot-helm3
++ CLUSTER_NAME=pr-47-2-bdd-boot-helm3
++ export ZONE=europe-west1-c
++ ZONE=europe-west1-c
++ export LABELS=branch=pr-47,cluster=bdd-boot-helm3,create-time=tue-mar-31-2020-11-51-18
++ LABELS=branch=pr-47,cluster=bdd-boot-helm3,create-time=tue-mar-31-2020-11-51-18
++ echo 'creating cluster pr-47-2-bdd-boot-helm3 with labels branch=pr-47,cluster=bdd-boot-helm3,create-time=tue-mar-31-2020-11-51-18'
+creating cluster pr-47-2-bdd-boot-helm3 with labels branch=pr-47,cluster=bdd-boot-helm3,create-time=tue-mar-31-2020-11-51-18
++ git clone https://github.com/jenkins-x-labs/cloud-resources.git
+Cloning into 'cloud-resources'...
++ cloud-resources/gcloud/create_cluster.sh
+creating a new cluster pr-47-2-bdd-boot-helm3 in project jenkins-x-bdd3 and region europe-west1-c
+WARNING: Currently VPC-native is not the default mode during cluster creation. In the future, this will become the default mode and can be disabled using `--no-enable-ip-alias` flag. Use `--[no-]enable-ip-alias` flag to suppress this warning.
+WARNING: Newly created clusters and node-pools will have node auto-upgrade enabled by default. This can be disabled using the `--no-enable-autoupgrade` flag.
+WARNING: Starting with version 1.18, clusters will have shielded GKE nodes by default.
+WARNING: Your Pod address range (`--cluster-ipv4-cidr`) can accommodate at most 1008 node(s). 
+This will enable the autorepair feature for nodes. Please see https://cloud.google.com/kubernetes-engine/docs/node-auto-repair for more information on node autorepairs.
+ERROR: (gcloud.beta.container.clusters.create) ResponseError: code=403, message=Kubernetes Engine API has not been used in project 688875092189 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/container.googleapis.com/overview?project=688875092189 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+[31m
+Pipeline failed on stage 'ci' : container 'step-runci'. The execution of the pipeline has stopped.[0m
