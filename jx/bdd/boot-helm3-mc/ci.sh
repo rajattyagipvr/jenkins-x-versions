@@ -31,7 +31,7 @@ echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentia
 gcloud auth activate-service-account --key-file $GKE_SA
 
 export CREATED_TIME=$(date '+%a-%b-%d-%Y-%H-%M-%S')
-export PROJECT_ID=jenkins-x-bdd3
+export PROJECT_ID=jenkins-x-labs-bdd
 export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-mc"
 export ZONE=europe-west1-c
 export LABELS="branch=${BRANCH_NAME,,},cluster=helm3-mc,create-time=${CREATED_TIME,,}"
