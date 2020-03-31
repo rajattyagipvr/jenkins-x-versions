@@ -25,6 +25,7 @@ echo "running the BDD test with JX_HOME = $JX_HOME"
 # replace the credentials file with a single user entry
 echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentials
 
+cat $JX_HOME/git/credentials
 
 # lets create a new GKE cluster
 gcloud auth activate-service-account --key-file $GKE_SA
