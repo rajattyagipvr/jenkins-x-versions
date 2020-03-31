@@ -20,7 +20,7 @@ export GH_OWNER="jenkins-x-labs-bdd-tests"
 git config --global --add user.name JenkinsXBot
 git config --global --add user.email jenkins-x@googlegroups.com
 
-echo "running the BDD tests with JX_HOME = $JX_HOME"
+echo "running the BDD test with JX_HOME = $JX_HOME"
 
 # replace the credentials file with a single user entry
 echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentials
