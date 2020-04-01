@@ -12,7 +12,7 @@ mkdir -p $JX_HOME/git
 
 jx --version
 
-export GH_USERNAME="jstrachan"
+export GH_USERNAME="jenkins-x-labs-bot"
 export GH_EMAIL="jenkins-x@googlegroups.com"
 export GH_OWNER="jenkins-x-labs-bdd-tests"
 
