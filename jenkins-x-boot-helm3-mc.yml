@@ -20,12 +20,12 @@ pipelineConfig:
           - name: GH_ACCESS_TOKEN 
             valueFrom:
               secretKeyRef:
-                name: jenkins-x-versions-bot-test-github
+                name: bdd-pipeline-token-github
                 key: password
           - name: JENKINS_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: test-jenkins-user 
+                name: bdd-admin-password
                 key: password
         agent:
           image: gcr.io/jenkinsxio/builder-go-nodejs:2.0.1245-582
@@ -35,9 +35,9 @@ pipelineConfig:
               volumes:
                 - name: sa
                   secret:
-                    secretName: bdd-secret
+                    secretName: bdd-gcp-sa
                     items:
-                      - key: bdd-credentials.json
+                      - key: credentials.json
                         path: bdd/sa.json
               containerOptions:
                 volumeMounts:

@@ -12,25 +12,24 @@ mkdir -p $JX_HOME/git
 
 jx --version
 
-export GH_USERNAME="jenkins-x-versions-bot-test"
+export GH_USERNAME="jenkins-x-labs-bot"
 export GH_EMAIL="jenkins-x@googlegroups.com"
-export GH_OWNER="jenkins-x-versions-bot-test"
+export GH_OWNER="jenkins-x-labs-bdd-tests"
 
 # lets setup git
 git config --global --add user.name JenkinsXBot
 git config --global --add user.email jenkins-x@googlegroups.com
 
-echo "running the BDD tests with JX_HOME = $JX_HOME"
+echo "running the BDD test with JX_HOME = $JX_HOME"
 
 # replace the credentials file with a single user entry
 echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentials
-
 
 # lets create a new GKE cluster
 gcloud auth activate-service-account --key-file $GKE_SA
 
 export CREATED_TIME=$(date '+%a-%b-%d-%Y-%H-%M-%S')
-export PROJECT_ID=jenkins-x-bdd3
+export PROJECT_ID=jenkins-x-labs-bdd
 export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-bdd-boot-helm3"
 export ZONE=europe-west1-c
 export LABELS="branch=${BRANCH_NAME,,},cluster=bdd-boot-helm3,create-time=${CREATED_TIME,,}"
@@ -39,7 +38,6 @@ echo "creating cluster $CLUSTER_NAME with labels $LABELS"
 
 git clone https://github.com/jenkins-x-labs/cloud-resources.git
 cloud-resources/gcloud/create_cluster.sh
-
 
 # TODO remove once we remove the code from the multicluster branch of jx:
 export JX_SECRETS_YAML=/tmp/secrets.yaml

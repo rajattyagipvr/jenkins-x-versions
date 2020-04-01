@@ -12,9 +12,9 @@ mkdir -p $JX_HOME/git
 
 jx --version
 
-export GH_USERNAME="jenkins-x-versions-bot-test"
+export GH_USERNAME="jenkins-x-labs-bot"
 export GH_EMAIL="jenkins-x@googlegroups.com"
-export GH_OWNER="jenkins-x-versions-bot-test"
+export GH_OWNER="jenkins-x-labs-bdd-tests"
 
 # lets setup git
 git config --global --add user.name JenkinsXBot
@@ -31,7 +31,7 @@ echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentia
 gcloud auth activate-service-account --key-file $GKE_SA
 
 export CREATED_TIME=$(date '+%a-%b-%d-%Y-%H-%M-%S')
-export PROJECT_ID=jenkins-x-bdd3
+export PROJECT_ID=jenkins-x-labs-bdd
 export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-mc"
 export ZONE=europe-west1-c
 export LABELS="branch=${BRANCH_NAME,,},cluster=helm3-mc,create-time=${CREATED_TIME,,}"
@@ -40,7 +40,6 @@ echo "CREATE dev cluster $CLUSTER_NAME with labels $LABELS"
 
 git clone https://github.com/jenkins-x-labs/cloud-resources.git
 cloud-resources/gcloud/create_cluster.sh
-
 
 # TODO remove once we remove the code from the multicluster branch of jx:
 export JX_SECRETS_YAML=/tmp/secrets.yaml
