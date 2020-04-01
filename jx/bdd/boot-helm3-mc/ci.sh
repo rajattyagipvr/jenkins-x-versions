@@ -41,7 +41,6 @@ echo "CREATE dev cluster $CLUSTER_NAME with labels $LABELS"
 git clone https://github.com/jenkins-x-labs/cloud-resources.git
 cloud-resources/gcloud/create_cluster.sh
 
-
 # TODO remove once we remove the code from the multicluster branch of jx:
 export JX_SECRETS_YAML=/tmp/secrets.yaml
 
