@@ -11,6 +11,7 @@ approvers:
 - rajdavies
 - rawlingsj
 - warrenbailey
+- jenkins-x-labs-bot
 reviewers:
 - abayer
 - cagiti
@@ -24,3 +25,4 @@ reviewers:
 - rajdavies
 - rawlingsj
 - warrenbailey
+- jenkins-x-labs-bot
