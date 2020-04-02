@@ -28,7 +28,7 @@ echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentia
 # lets create a new GKE cluster
 gcloud auth activate-service-account --key-file $GKE_SA
 
-gcloud auth list
+# gcloud auth list
 
 export CREATED_TIME=$(date '+%a-%b-%d-%Y-%H-%M-%S')
 export PROJECT_ID=jenkins-x-labs-bdd
