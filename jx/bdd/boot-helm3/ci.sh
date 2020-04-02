@@ -25,10 +25,6 @@ echo "running the BDD test with JX_HOME = $JX_HOME"
 # replace the credentials file with a single user entry
 echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentials
 
-# lets create a new GKE cluster
-gcloud auth activate-service-account --key-file $GKE_SA --project $PROJECT_ID
-
-# gcloud auth list
 
 export CREATED_TIME=$(date '+%a-%b-%d-%Y-%H-%M-%S')
 export PROJECT_ID=jenkins-x-labs-bdd
@@ -36,6 +32,11 @@ export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-bdd-boot-helm3"
 export ZONE=europe-west1-c
 export LABELS="branch=${BRANCH_NAME,,},cluster=bdd-boot-helm3,create-time=${CREATED_TIME,,}"
 
+
+# lets create a new GKE cluster
+gcloud auth activate-service-account --key-file $GKE_SA --project $PROJECT_ID
+
+# gcloud auth list
 
 sleep 1000000
 
