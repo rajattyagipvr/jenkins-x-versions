@@ -21,3 +21,6 @@ repositories:
   - prefix: gloo
     urls:
       - https://storage.googleapis.com/solo-public-helm
+  - prefix: external-secrets
+    urls:
+      - https://godaddy.github.io/kubernetes-external-secrets
