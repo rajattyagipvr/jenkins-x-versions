@@ -34,6 +34,9 @@ echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentia
 echo "creating cluster $CLUSTER_NAME in project $PROJECT_ID with labels $LABELS"
 
 git clone https://github.com/jenkins-x-labs/cloud-resources.git
+
+sleep 1000000
+
 cloud-resources/gcloud/create_cluster.sh
 
 # TODO remove once we remove the code from the multicluster branch of jx:
