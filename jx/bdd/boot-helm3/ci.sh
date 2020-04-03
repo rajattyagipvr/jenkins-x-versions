@@ -31,19 +31,7 @@ echo "running the BDD test with JX_HOME = $JX_HOME"
 # replace the credentials file with a single user entry
 echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentials
 
-# lets create a new GKE cluster
-gcloud auth activate-service-account --key-file $GKE_SA --project $PROJECT_ID
-
-gcloud auth list
-
-echo "setting the default project"
-gcloud config set project $PROJECT_ID
-
-echo "listing k8s clusters in project: $PROJECT_ID"
-
-gcloud beta container clusters list --project $PROJECT_ID
-
-echo "creating cluster $CLUSTER_NAME with labels $LABELS"
+echo "creating cluster $CLUSTER_NAME in project $PROJECT_ID with labels $LABELS"
 
 git clone https://github.com/jenkins-x-labs/cloud-resources.git
 cloud-resources/gcloud/create_cluster.sh
