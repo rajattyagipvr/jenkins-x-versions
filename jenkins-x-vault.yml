@@ -13,8 +13,6 @@ pipelineConfig:
                 cpu: 1
                 memory: 2048Mi
         environment:
-          - name: GOPROXY
-            value: http://jenkins-x-athens-proxy:80
           - name: GKE_SA
             value: /secrets/bdd/sa.json
           - name: GH_ACCESS_TOKEN 
@@ -44,6 +42,6 @@ pipelineConfig:
                   - mountPath: /secrets
                     name: sa
             steps:
-              - command: jx/bdd/boot-helm3-mc/ci.sh
+              - command: jx/bdd/vault/ci.sh
                 image: gcr.io/jenkinsxio-labs/jxl:0.0.162
                 name: runci
