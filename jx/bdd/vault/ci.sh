@@ -64,12 +64,8 @@ echo "using the version stream ref: $PULL_PULL_SHA"
 # create the boot git repository
 jxl boot create -b --provider=gke --secret vault --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE --out giturl.txt
 
-
-# lets wait a bit for the operator to kick in... 
-sleep 60
-
 # lets wait for the vault pod to be ready
-kubectl wait  --for=condition=Ready pod/vault-0
+kubectl wait  pod  -l app.kubernetes.io/name=vault --for=condition=Ready
 
 # import secrets...
 echo "secrets:
