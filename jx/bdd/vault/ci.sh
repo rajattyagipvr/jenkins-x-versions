@@ -47,7 +47,6 @@ kubectl label namespace vault-infra name=vault-infra
 helm repo add banzaicloud-stable https://kubernetes-charts.banzaicloud.com
 helm upgrade --namespace vault-infra --install vault-operator banzaicloud-stable/vault-operator --wait
 
-kubectl create ns jx
 jxl ns jx
 
 git clone https://github.com/jenkins-x-labs/bank-vaults
