@@ -64,6 +64,9 @@ echo "using the version stream ref: $PULL_PULL_SHA"
 # create the boot git repository
 jxl boot create -b --provider=gke --secret vault --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE --out giturl.txt
 
+# lets wait for the operator to kick in
+sleep 60
+
 # lets wait for the vault pod to be ready
 kubectl wait  pod  -l app.kubernetes.io/name=vault --for=condition=Ready
 
@@ -77,6 +80,13 @@ echo "secrets:
     username: $GH_USERNAME
     token: $GH_ACCESS_TOKEN
     email: $GH_EMAIL" > /tmp/secrets.yaml
+
+# lets expose the vault service on localhost
+kubectl port-forward service/vault 8200 &
+
+sleep 5
+
+export VAULT_ADDR=https://127.0.0.1:8200
 
 jxl boot secrets import -f /tmp/secrets.yaml --git-url `cat giturl.txt`
 
