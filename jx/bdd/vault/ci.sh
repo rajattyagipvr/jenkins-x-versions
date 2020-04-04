@@ -47,7 +47,6 @@ kubectl label namespace vault-infra name=vault-infra
 helm repo add banzaicloud-stable https://kubernetes-charts.banzaicloud.com
 helm upgrade --namespace vault-infra --install vault-operator banzaicloud-stable/vault-operator --wait
 
-kubectl create ns jx
 jxl ns jx
 
 git clone https://github.com/jenkins-x-labs/bank-vaults
@@ -65,9 +64,11 @@ echo "using the version stream ref: $PULL_PULL_SHA"
 # create the boot git repository
 jxl boot create -b --provider=gke --secret vault --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE --out giturl.txt
 
+# lets wait for the operator to kick in
+sleep 60
 
 # lets wait for the vault pod to be ready
-kubectl wait  --for=condition=Ready pod/vault-0
+kubectl wait  pod  -l app.kubernetes.io/name=vault --for=condition=Ready
 
 # import secrets...
 echo "secrets:
@@ -80,12 +81,19 @@ echo "secrets:
     token: $GH_ACCESS_TOKEN
     email: $GH_EMAIL" > /tmp/secrets.yaml
 
+# lets expose the vault service on localhost
+kubectl port-forward service/vault 8200 &
+
+sleep 5
+
+export VAULT_ADDR=https://127.0.0.1:8200
+
 jxl boot secrets import -f /tmp/secrets.yaml --git-url `cat giturl.txt`
 
 # run the boot Job
 echo running: jxl boot run -b --git-url `cat giturl.txt`
 
-jxl boot run -b --git-url https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com/${GH_OWNER}/environment-${DEV_CLUSTER_NAME}-dev.git --job
+jxl boot run -b --git-url https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com/${GH_OWNER}/environment-${CLUSTER_NAME}-dev.git --job
 
 
 # lets make sure jx defaults to helm3
