@@ -65,7 +65,7 @@ jxl boot secrets import -f /tmp/secrets.yaml --git-url `cat giturl.txt`
 # run the boot Job
 echo running: jxl boot run -b --git-url `cat giturl.txt`
 
-jxl boot run -b --git-url `cat giturl.txt` --job
+jxl boot run -b --job
 
 
 # now lets create the staging cluster
@@ -99,7 +99,7 @@ jxl boot secrets import -f /tmp/secrets.yaml --git-url=$STAGING_GIT_URL
 # TODO should not be needed but just in case
 jx ns jx-staging
 
-jxl boot run -b --git-url=$STAGING_GIT_URL --job
+jxl boot run -b --job
 
 
 echo "SWITCH: to dev cluster: $STAGING_CLUSTER_NAME to start BDD tests"
