@@ -93,7 +93,7 @@ jxl boot secrets import -f /tmp/secrets.yaml --git-url `cat giturl.txt`
 # run the boot Job
 echo running: jxl boot run -b --git-url `cat giturl.txt`
 
-jxl boot run -b --git-url https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com/${GH_OWNER}/environment-${CLUSTER_NAME}-dev.git --job
+jxl boot run -b --job
 
 
 # lets make sure jx defaults to helm3
