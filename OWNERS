@@ -12,6 +12,7 @@ approvers:
 - rawlingsj
 - warrenbailey
 - jenkins-x-labs-bot
+- cloudbees-ci-cd[bot]
 reviewers:
 - abayer
 - cagiti
@@ -26,3 +27,4 @@ reviewers:
 - rawlingsj
 - warrenbailey
 - jenkins-x-labs-bot
+- cloudbees-ci-cd[bot]
