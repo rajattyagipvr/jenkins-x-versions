@@ -20,9 +20,9 @@ export GH_OWNER="jenkins-x-labs-bot"
 
 export PROJECT_ID=jenkins-x-labs-bdd
 export CREATED_TIME=$(date '+%a-%b-%d-%Y-%H-%M-%S')
-export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-bdd-boot-helm3"
+export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-bdd-terraform"
 export ZONE=europe-west1-c
-export LABELS="branch=${BRANCH_NAME,,},cluster=bdd-boot-helm3,create-time=${CREATED_TIME,,}"
+export LABELS="branch=${BRANCH_NAME,,},cluster=bdd-terraform,create-time=${CREATED_TIME,,}"
 
 # lets setup git
 git config --global --add user.name JenkinsXBot

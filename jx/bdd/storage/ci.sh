@@ -20,9 +20,9 @@ export GH_OWNER="jenkins-x-labs-bot"
 
 export PROJECT_ID=jenkins-x-labs-bdd
 export CREATED_TIME=$(date '+%a-%b-%d-%Y-%H-%M-%S')
-export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-bdd-boot-helm3"
+export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-bdd-storage"
 export ZONE=europe-west1-c
-export LABELS="branch=${BRANCH_NAME,,},cluster=bdd-boot-helm3,create-time=${CREATED_TIME,,}"
+export LABELS="branch=${BRANCH_NAME,,},cluster=bdd-storage,create-time=${CREATED_TIME,,}"
 
 # lets setup git
 git config --global --add user.name JenkinsXBot
@@ -44,7 +44,8 @@ export JX_SECRETS_YAML=/tmp/secrets.yaml
 echo "using the version stream ref: $PULL_PULL_SHA"
 
 # create the boot git repository
-jxl boot create -b --provider=gke --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE --out giturl.txt
+jxl boot create -b --provider=gke --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE \
+  --bucket-logs=gs://bdd-logs --bucket-repo=gs://bdd-repo --bucket-reports=gs://bdd-reports --repository=bucketrepo
 
 # import secrets...
 echo "secrets:
@@ -57,7 +58,8 @@ echo "secrets:
     token: $GH_ACCESS_TOKEN
     email: $GH_EMAIL" > /tmp/secrets.yaml
 
-jxl boot secrets import -f /tmp/secrets.yaml --git-url `cat giturl.txt`
+jxl boot secrets import -f /tmp/secrets.yaml --git-url https://github.com/${GH_OWNER}/environment-${CLUSTER_NAME}-dev.git
+
 
 jxl boot run -b --job
 
