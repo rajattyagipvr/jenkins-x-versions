@@ -62,7 +62,8 @@ export JX_SECRETS_YAML=/tmp/secrets.yaml
 echo "using the version stream ref: $PULL_PULL_SHA"
 
 # create the boot git repository
-jxl boot create -b --provider=gke --secret vault --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE --out giturl.txt
+jxl boot create -b --provider=gke --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE \
+  --secret=vault
 
 # lets wait for the operator to kick in
 sleep 60
@@ -88,11 +89,9 @@ sleep 5
 
 export VAULT_ADDR=https://127.0.0.1:8200
 
-jxl boot secrets import -f /tmp/secrets.yaml --git-url `cat giturl.txt`
+jxl boot secrets import -f /tmp/secrets.yaml --git-url https://github.com/${GH_OWNER}/environment-${CLUSTER_NAME}-dev.git
 
-# run the boot Job
 jxl boot run -b --job
-
 
 # lets make sure jx defaults to helm3
 export JX_HELM3="true"

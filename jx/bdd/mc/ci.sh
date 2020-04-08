@@ -14,24 +14,27 @@ jx --version
 
 export GH_USERNAME="jenkins-x-labs-bot"
 export GH_EMAIL="jenkins-x@googlegroups.com"
+export GH_USERNAME="jenkins-x-labs-bot"
+export GH_EMAIL="jenkins-x@googlegroups.com"
 # TODO when we can use an org and private repos
 #export GH_OWNER="jenkins-x-labs-bdd-tests"
 export GH_OWNER="jenkins-x-labs-bot"
 
-export PROJECT_ID=jenkins-x-labs-bdd
 export CREATED_TIME=$(date '+%a-%b-%d-%Y-%H-%M-%S')
-export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-bdd-boot-helm3"
+export PROJECT_ID=jenkins-x-labs-bdd
+export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-bdd-mc"
 export ZONE=europe-west1-c
-export LABELS="branch=${BRANCH_NAME,,},cluster=bdd-boot-helm3,create-time=${CREATED_TIME,,}"
+export LABELS="branch=${BRANCH_NAME,,},cluster=bdd-mc,create-time=${CREATED_TIME,,}"
 
 # lets setup git
 git config --global --add user.name JenkinsXBot
 git config --global --add user.email jenkins-x@googlegroups.com
 
-echo "running the BDD test with JX_HOME = $JX_HOME"
+echo "running the BDD tests with JX_HOME = $JX_HOME"
 
 # replace the credentials file with a single user entry
 echo "https://$GH_USERNAME:$GH_ACCESS_TOKEN@github.com" > $JX_HOME/git/credentials
+
 
 echo "creating cluster $CLUSTER_NAME in project $PROJECT_ID with labels $LABELS"
 
@@ -44,7 +47,7 @@ export JX_SECRETS_YAML=/tmp/secrets.yaml
 echo "using the version stream ref: $PULL_PULL_SHA"
 
 # create the boot git repository
-jxl boot create -b --provider=gke --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE --out giturl.txt
+jxl boot create -b --env-remote --provider=gke --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE --out giturl.txt
 
 # import secrets...
 echo "secrets:
@@ -62,19 +65,47 @@ jxl boot secrets import -f /tmp/secrets.yaml --git-url `cat giturl.txt`
 jxl boot run -b --job
 
 
-# lets make sure jx defaults to helm3
-export JX_HELM3="true"
+# now lets create the staging cluster
+export DEV_CLUSTER_NAME="$CLUSTER_NAME"
+export CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-mc-staging"
+export STAGING_CLUSTER_NAME="${BRANCH_NAME,,}-$BUILD_NUMBER-mc-staging"
+export STAGING_GIT_URL="https://github.com/${GH_OWNER}/environment-${DEV_CLUSTER_NAME}-staging.git"
+export NAMESPACE=jx-staging
 
-gcloud container clusters get-credentials $CLUSTER_NAME --zone $ZONE --project $PROJECT_ID
+echo "CREATE: staging cluster $CLUSTER_NAME with namespace $NAMESPACE with labels $LABELS"
+
+cloud-resources/gcloud/create_cluster.sh
+
+
+
+mkdir staging
+cd staging
+
+echo "SWITCH: to staging cluster: $STAGING_CLUSTER_NAME to setup staging"
+gcloud container clusters get-credentials $STAGING_CLUSTER_NAME --zone $ZONE --project $PROJECT_ID
+jx ns jx-staging
+jx ctx -b
+
+jxl boot verify requirements -b --version-stream-ref=$PULL_PULL_SHA --env-git-owner=$GH_OWNER --project=$PROJECT_ID --cluster=$CLUSTER_NAME --zone=$ZONE --git-url=$STAGING_GIT_URL
+
+# TODO should not be needed but just in case
+jx ns jx-staging
+
+jxl boot secrets import -f /tmp/secrets.yaml --git-url=$STAGING_GIT_URL
+
+# TODO should not be needed but just in case
+jx ns jx-staging
+
+jxl boot run -b --job
+
+
+echo "SWITCH: to dev cluster: $STAGING_CLUSTER_NAME to start BDD tests"
+gcloud container clusters get-credentials $DEV_CLUSTER_NAME --zone $ZONE --project $PROJECT_ID
 jx ns jx
-
-# diagnostic commands to test the image's kubectl
-kubectl version
+jx ctx -b
 
 # for some reason we need to use the full name once for the second command to work!
 kubectl get environments
-kubectl get env
-kubectl get env dev -oyaml
 
 # TODO not sure we need this?
 helm init
@@ -82,9 +113,6 @@ helm repo add jenkins-x https://storage.googleapis.com/chartmuseum.jenkins-x.io
 
 
 export JX_DISABLE_DELETE_APP="true"
-
-export GIT_ORGANISATION="$GH_OWNER"
-
 
 # run the BDD tests
 bddjx -ginkgo.focus=golang -test.v
