@@ -1,3 +1,10 @@
+# custom build pack by rajat
+gitops:
+  dev:
+    buildPackName: kubernetes-workloads
+    buildPackRef: master
+    buildPackUrl: https://github.com/rajattyagipvr/jenkins-x-kubernetes.git
+
 {{- if eq .Values.jxRequirements.cluster.provider "gke"}}
 controllerbuild:
   serviceaccount:
