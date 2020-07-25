@@ -88,10 +88,6 @@ quickstarts:
   language: Java
   name: spring-boot-watch-pipeline-activity
   version: 1.0.0+177d75201
-- downloadZipURL: https://codeload.github.com/jenkins-x-quickstarts/vertx-rest-prometheus/zip/fd180fd76
-  language: Java
-  name: vertx-rest-prometheus
-  version: 1.0.0+fd180fd76
 - downloadZipURL: https://github.com/machine-learning-quickstarts/ML-python-pytorch-cpu-training/archive/master.zip
   language: Python
   name: ML-python-pytorch-cpu-training
@@ -247,4 +243,8 @@ quickstarts:
 - downloadZipURL: https://github.com/machine-learning-quickstarts/ML-python-sklearn-lrc-cpu/archive/master.zip
   language: Python
   name: ML-python-sklearn-lrc-cpu
-  version: 1.0.0+d9e925718    
+  version: 1.0.0+d9e925718
+- downloadZipURL: https://codeload.github.com/jenkins-x-quickstarts/vertx-rest-prometheus/zip/fd180fd76
+  language: Java
+  name: vertx-rest-prometheus
+  version: 1.0.0+fd180fd76  
