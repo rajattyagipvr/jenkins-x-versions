@@ -3,11 +3,11 @@ defaultOwner: jenkins-x-quickstarts
 quickstarts:
 - downloadZipURL: https://github.com/machine-learning-quickstarts/ML-python-sklearn-lrc-cpu-training/archive/master.zip
   language: Python
-  name: ML-python-sklearn-lrc-cpu-training
+  name: ml-python-sklearn-lrc-cpu-training
   version: 1.0.0+d9e925718
 - downloadZipURL: https://github.com/machine-learning-quickstarts/ML-python-sklearn-lrc-cpu/archive/master.zip
   language: Python
-  name: ML-python-sklearn-lrc-cpu
+  name: ml-python-sklearn-lrc-cpu
   version: 1.0.0+d9e925718
 - downloadZipURL: https://codeload.github.com/jenkins-x-quickstarts/android-quickstart/zip/d9e925718
   language: Java
