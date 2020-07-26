@@ -465,8 +465,8 @@ dependencies:
   owner: jenkins-x-labs
   repo: jxl
   url: https://github.com/rajattyagipvr/jxl
-  version: 0.0.210
-  versionURL: https://github.com/rajattyagipvr/jxl/releases/tag/v0.0.210
+  version: 0.0.212
+  versionURL: https://github.com/rajattyagipvr/jxl/releases/tag/v0.0.212
 - host: github.com
   owner: jenkins-x-labs
   repo: istio
