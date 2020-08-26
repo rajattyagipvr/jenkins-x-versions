@@ -17,6 +17,11 @@ quickstarts:
   language: D
   name: dlang-http
   version: 1.0.0+280f378d2
+- downloadZipURL: https://codeload.github.com/jenkins-x-quickstarts/golang-mongo/zip/068a14d5f
+  language: Go
+  name: golang-mongo
+  version: 1.0.0+068a14d5f
+
 - downloadZipURL: https://codeload.github.com/jenkins-x-quickstarts/golang-http/zip/068a14d5f
   language: Go
   name: golang-http
